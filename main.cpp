@@ -133,15 +133,17 @@ int main(int argc, char *argv[])
                 double yPos = double(imageSize) - (double(imageSize) * double(j) / wholeFileLength);
                 painter.drawEllipse(QPointF(xPos, yPos), dotRadius, dotRadius);
 
-                xPos = double(imageSize) * double(j) / wholeFileLength;
-                yPos = double(imageSize) - (double(imageSize) * double(i) / wholeFileLength);
-                painter.drawEllipse(QPointF(xPos, yPos), dotRadius, dotRadius);
-
                 if (i != j)
                 {
-                    QString dupString = wholeFile.mid(i, substringSize);
+                    xPos = double(imageSize) * double(j) / wholeFileLength;
+                    yPos = double(imageSize) - (double(imageSize) * double(i) / wholeFileLength);
+                    painter.drawEllipse(QPointF(xPos, yPos), dotRadius, dotRadius);
+
                     if (textFile)
+                    {
+                        QString dupString = wholeFile.mid(i, substringSize);
                         outstream << QString::number(i) << ", " << QString::number(j) << ": " << dupString << endl;
+                    }
                 }
             }
         }
